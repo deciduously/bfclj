@@ -29,3 +29,7 @@
     (if (empty? ops)
       "Done!"
       (recur (rest ops) ((first ops) machine)))))
+
+(defn -main
+  [prog & args]
+  (run prog))

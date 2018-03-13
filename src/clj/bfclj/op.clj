@@ -7,7 +7,8 @@
 
 (def grow-tape-if-edge
   #(if (= (count (:tape %)) (inc (:current %)))
-     (assoc-in % [:tape] (conj (:tape %) 0))))
+     (assoc-in % [:tape] (conj (:tape %) 0))
+     (identity %)))
 
 (def inc-current #(update-in (grow-tape-if-edge %) [:current] inc))
 
