@@ -12,4 +12,6 @@
 
 (def inc-current #(update-in (grow-tape-if-edge %) [:current] inc))
 
+(def dec-current #(update-in % [:current] dec))
+
 (def out-cell #(do (prn (sp/select [:tape (:current %)] %)) %))

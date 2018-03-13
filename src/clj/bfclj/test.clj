@@ -15,3 +15,6 @@
 (deftest test-inc-current
   (is (= {:tape [0 0] :current 1} (op/inc-current fresh)))
   (is (= {:tape [0 1] :current 1} (op/inc-current {:tape [0 1] :current 0}))))
+
+(deftest test-dec-current
+  (is (= {:tape [0 0] :current 0} (op/dec-current {:tape [0 0] :current 1}))))

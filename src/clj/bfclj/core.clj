@@ -11,14 +11,15 @@
     "+" op/inc-cell
     "-" op/dec-cell
     "." op/out-cell
-    ">" op/inc-current))
+    ">" op/inc-current
+    "<" op/dec-current))
 
 (defn read-bf
   "Read a BF string"
   [s]
   (map parse-bf (split s #"")))
 
-(def simple "+++>+++-.")
+(def simple "+++>++<+-.")
 
 (defn run
   "Run!"
