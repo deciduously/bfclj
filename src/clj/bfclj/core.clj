@@ -4,13 +4,12 @@
             [clojure.string :refer [split]]
             [com.rpl.specter :as sp]))
 
-(def simple ">+++.")
-
 (defn parse-bf
   "Mapping from BF character instruction to operation"
   [c]
   (condp = c
     "+" op/inc-cell
+    "-" op/dec-cell
     "." op/out-cell
     ">" op/inc-current))
 
@@ -18,6 +17,8 @@
   "Read a BF string"
   [s]
   (map parse-bf (split s #"")))
+
+(def simple "+++>+++-.")
 
 (defn run
   "Run!"

@@ -3,6 +3,8 @@
 
 (def inc-cell #(sp/transform [:tape (:current %)] inc %))
 
+(def dec-cell #(sp/transform [:tape (:current %)] dec %))
+
 (def grow-tape-if-edge
   #(if (= (count (:tape %)) (inc (:current %)))
      (assoc-in % [:tape] (conj (:tape %) 0))))
