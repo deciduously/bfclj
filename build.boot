@@ -1,6 +1,7 @@
 (set-env!
  :source-paths #{"src/clj"}
- :dependencies '[[org.clojure/clojure "1.9.0"]])
+ :dependencies '[[org.clojure/clojure "1.9.0"]
+                 [com.rpl/specter "1.1.0"]])
 
 (task-options!
   aot {:namespace #{'bfclj.core}}
