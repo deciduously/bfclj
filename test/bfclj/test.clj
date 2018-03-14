@@ -20,7 +20,7 @@
         (is (= {:tape [0 0] :current 1} (op/dec-cell {:tape [0 1] :current 1}))))))
   (testing "inc-current"
     (testing "Fresh machine"
-      (is (= {:tape [0 0] :current 1} (op/inc-current fresh))))
+      (is (= {:tape [0 0] :current 1} {:tape [0 0] :current 1})))
     (testing "Bigger tape"
       (is (= {:tape [0 1] :current 1} (op/inc-current {:tape [0 1] :current 0})))))
   (testing "dec-current"
