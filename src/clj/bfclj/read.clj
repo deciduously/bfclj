@@ -37,16 +37,12 @@
   [s]
   (= \newline (last s)))
 
-;; if the second block of the rest of the sequence starts with the same as the head of the sequence, quit.
-
-
 ;; TODO only allow a newline as the terminating character
 (defn valid-tokens?
   "Check that all tokens are valid"
   [s]
   (let [valids #{\+ \- \[ \] \, \. \< \> \newline}]
     (reduce #(and % (contains? valids %2)) true s)))
-
 
 (def is-bracket? (partial contains? #{\[ \]}))
 
@@ -55,7 +51,6 @@
                          (filter (comp is-bracket? first))
                          flatten))
 
-;; check for an even number or 0 first to save time
 (defn loops-valid?
   "Check for matching loop brackets"
   [s]
