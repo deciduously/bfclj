@@ -1,3 +1,4 @@
 # BFCLJ
-[![Build Status](https://travis-ci.org/deciduously/deciduously-com.svg?branch=release)](https://travis-ci.org/deciduously/deciduously-com)
+[![Build Status](https://travis-ci.org/deciduously/bfclj.svg?branch=release)](https://travis-ci.org/deciduously/bfclj)
+
 Brainfuck interpreter in Clojure
