@@ -1,5 +1,6 @@
 (set-env!
  :source-paths #{"src/clj" "test"}
+ :resource-paths #{"resources/public"}
  :dependencies '[[org.clojure/clojure "1.9.0"]
                  [adzerk/boot-test "1.2.0" :scope "test"]
                  [com.rpl/specter "1.1.0"]
