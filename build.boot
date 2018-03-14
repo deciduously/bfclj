@@ -1,6 +1,7 @@
 (set-env!
- :source-paths #{"src/clj"}
+ :source-paths #{"src/clj" "test"}
  :dependencies '[[org.clojure/clojure "1.9.0"]
+                 [adzerk/boot-test "1.2.0" :scope "test"]
                  [com.rpl/specter "1.1.0"]])
 
 (task-options!
@@ -14,7 +15,9 @@
         :file "bfclj.jar"}
   sift {:include #{#"bfclj.jar"}})
 
-(require '[bfclj.core :as b])
+(require '[bfclj.core :as b]
+         'bfclj.test
+         '[adzerk.boot-test :refer :all])
 
 (deftask build
   "Builds a production uberjar"
@@ -27,7 +30,7 @@
    (sift)
    (target)))
 
-(deftask run
-  "Run interpreter"
-  []
-  (b/run))
+;(deftask run
+;  "Run interpreter"
+;  []
+;  (b/run))

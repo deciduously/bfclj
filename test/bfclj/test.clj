@@ -5,6 +5,8 @@
             [bfclj.test :as sut]
             [clojure.test :refer [deftest is run-tests testing]]))
 
+(def hello-world "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.\n")
+
 (deftest test-inc-cell
   (testing "inc-cell"
     (testing "Fresh machine"
@@ -32,13 +34,19 @@
 (deftest test-read
   (testing "Read"
     (testing "Ends with a newline?"
-      (is (r/ends-with-newline? "....\n"))
-      (is (not (r/ends-with-newline? "..."))))
-    (testing "All valid tokens?"
-      (testing "One of each"
-        (is (r/valid-tokens "+-[],.<>\n")))
-      (testing "One invalid token?"
-        (is (not (r/valid-tokens "+-[],;.<>\n")))))
+      (testing "Has one"
+        (is (r/ends-with-newline? "....\n")))
+      (testing "Doesn't have one"
+        (is (not (r/ends-with-newline? "..."))))
+      (testing "Hello, world!"
+        (is (r/ends-with-newline? hello-world))))
+    ;(testing "All valid tokens?"
+    ;  (testing "One of each"
+    ;    (is (r/valid-tokens "+-[],.<>\n")))
+    ;  (testing "One invalid token?"
+    ;    (is (not (r/valid-tokens "+-[],;.<>\n"))))
+    ;  (testing "Hello, world!"
+    ;    (is (r/valid-tokens hello-world))))
     (testing "Valid loops?"
       (testing "Correct loop"
         (is (r/loops-valid? "...[...]...\n")))
@@ -49,4 +57,7 @@
       (testing "Two correct"
         (is (r/loops-valid? "..[.]..[...].\n")))
       (testing "No loops"
-        (is (r/loops-valid? "...\n"))))))
+        (is (r/loops-valid? "...\n")))
+      (testing "Hello, world!"
+        (is (r/loops-valid? hello-world))))))
+

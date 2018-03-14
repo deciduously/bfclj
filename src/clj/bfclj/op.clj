@@ -5,13 +5,21 @@
 
 (def dec-cell #(sp/transform [:tape (:current %)] dec %))
 
-(def grow-tape-if-edge
-  #(if (= (count (:tape %)) (inc (:current %)))
-     (assoc-in % [:tape] (conj (:tape %) 0))
-     (identity %)))
+;; this should be done during reading.
+;; make sure it's a valid machine.
+;; pass a pre-checked full machine.
 
-(def inc-current #(update-in (grow-tape-if-edge %) [:current] inc))
+
+(def inc-current #(update-in % [:current] inc))
 
 (def dec-current #(update-in % [:current] dec))
 
-(def out-cell #(do (prn (sp/select [:tape (:current %)] %)) %))
+(def out-cell #(do (prn (nth (:tape %) (:current %))) %))
+
+(def loop-open #(if (= 0 (nth (:tape %) (:current %)))
+                  (do
+                    (assoc-in % [:current] (+ (:offset %) (:current %)))
+                    (assoc-in % [:offset] nil))
+                  (inc-current %)))
+
+(def loop-close #()) ;;similar here
