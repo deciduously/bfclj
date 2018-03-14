@@ -17,7 +17,6 @@
   sift {:include #{#"bfclj.jar"}})
 
 (require '[bfclj.core :as b]
-         'bfclj.test
          '[adzerk.boot-test :refer :all])
 
 (deftask build
