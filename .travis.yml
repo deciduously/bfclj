@@ -1,0 +1,12 @@
+
+language: java
+jdk:
+  - oraclejdk8
+
+install: make deps
+script: bin/boot test
+
+cache:
+  directories:
+    - .autoconf
+    - $HOME/.m2
