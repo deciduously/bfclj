@@ -3,7 +3,7 @@
  :dependencies '[[org.clojure/clojure "1.9.0"]
                  [adzerk/boot-test "1.2.0" :scope "test"]
                  [com.rpl/specter "1.1.0"]
-                 [lein-kibit "0.1.6-beta2" :scope "test"]])
+                 [tolitius/boot-check "0.1.9" :scope "test"]])
 
 (task-options!
   aot {:namespace #{'bfclj.core}}
@@ -17,7 +17,17 @@
   sift {:include #{#"bfclj.jar"}})
 
 (require '[bfclj.core :as b]
-         '[adzerk.boot-test :refer :all])
+         '[adzerk.boot-test :refer :all]
+         '[tolitius.boot-check :as check])
+
+(deftask check-sources
+  "Run static analyzers/linters"
+  []
+  (comp
+   (check/with-yagni)
+   (check/with-eastwood)
+   (check/with-kibit)
+   (check/with-bikeshed)))
 
 (deftask build
   "Builds a production uberjar"
