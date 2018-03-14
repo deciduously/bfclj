@@ -1,5 +1,5 @@
 (ns bfclj.test.op-test
-  (:require [bfclj.machine :refer [fresh]]
+  (:require [bfclj.parse :refer [fresh]]
             [bfclj.op :as op]
             [clojure.test :refer [deftest is run-tests testing]]))
 

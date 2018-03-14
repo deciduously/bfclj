@@ -7,7 +7,7 @@
                  [tolitius/boot-check "0.1.9" :scope "test"]])
 
 (task-options!
-  aot {:namespace #{'bfclj.core}}
+  aot {:namespace '#{bfclj.core}}
   pom {:project 'bfclj
        :description "Brainfuck intepreter"
        :license {"MIT" "https://github.com/deciduously/bfclj/blob/master/LICENSE"}
@@ -44,4 +44,4 @@
 ;(deftask run
 ;  "Run interpreter"
 ;  []
-;  (b/run))
+;  (b/run hello-world))

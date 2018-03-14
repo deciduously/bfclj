@@ -18,3 +18,5 @@
                   (inc-current %)))
 
 (def loop-close #()) ;;similar here
+
+(def terminate-program #(prn "TERMINATED"))
