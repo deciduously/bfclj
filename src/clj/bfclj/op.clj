@@ -11,7 +11,7 @@
 
 (def out-cell #(do (prn (nth (:tape %) (:current %))) %))
 
-(def loop-open #(if (= 0 (nth (:tape %) (:current %)))
+(def loop-open #(if (zero? (nth (:tape %) (:current %)))
                   (do
                     (assoc-in % [:current] (+ (:offset %) (:current %)))
                     (assoc-in % [:offset] nil))
