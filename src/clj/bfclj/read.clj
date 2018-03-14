@@ -43,6 +43,6 @@
   (let [cs (split s #"")]
     (even? (count (filter #(or (= "[" %) (= "]" %)) cs)))))
 
-(defn validate-program
+(defn valid-program?
   [s]
   (ends-with-newline? s))
