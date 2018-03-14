@@ -43,6 +43,14 @@
   (let [cs (split s #"")]
     (even? (count (filter #(or (= "[" %) (= "]" %)) cs)))))
 
+(defn valid-tokens?
+  "Check that all tokens are valid"
+  [s]
+  true)
+
 (defn valid-program?
   [s]
-  (ends-with-newline? s))
+  (let [validators [(ends-with-newline? s)
+                    (valid-tokens? s)
+                    (loops-valid? s)]]
+    (reduce #(and % %2) true validators)))

@@ -2,7 +2,8 @@
  :source-paths #{"src/clj" "test"}
  :dependencies '[[org.clojure/clojure "1.9.0"]
                  [adzerk/boot-test "1.2.0" :scope "test"]
-                 [com.rpl/specter "1.1.0"]])
+                 [com.rpl/specter "1.1.0"]
+                 [lein-kibit "0.1.6-beta2" :scope "test"]])
 
 (task-options!
   aot {:namespace #{'bfclj.core}}
