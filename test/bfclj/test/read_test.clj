@@ -5,11 +5,11 @@
 
 (deftest ends-with-newline?-test
   (testing "Has one"
-    (is (r/ends-with-newline? "....\n"))
-    (testing "Doesn't have one"
-      (is (not (r/ends-with-newline? "..."))))
-    (testing "Hello, world!"
-      (is (r/ends-with-newline? hello-world)))))
+    (is (r/ends-with-newline? "....\n")))
+  (testing "Doesn't have one"
+    (is (not (r/ends-with-newline? "..."))))
+  (testing "Hello, world!"
+    (is (r/ends-with-newline? hello-world))))
 
 (deftest valid-tokens?-test
   (testing "One of each"

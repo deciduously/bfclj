@@ -43,10 +43,12 @@
   (let [cs (split s #"")]
     (even? (count (filter #(or (= "[" %) (= "]" %)) cs)))))
 
+;; TODO only allow a newline as the terminating character
 (defn valid-tokens?
   "Check that all tokens are valid"
   [s]
-  true)
+  (let [valids #{\+ \- \[ \] \, \. \< \> \newline}]
+    (reduce #(and % (contains? valids %2)) true s)))
 
 (defn valid-program?
   [s]
