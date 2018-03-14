@@ -24,8 +24,9 @@
 (deftest dec-current-test
   (is (= {:tape [0 0] :current 0} (op/dec-current {:tape [0 0] :current 1}))))
 
-(deftest op-test
-  (inc-cell-test)
-  (dec-cell-test)
-  (inc-current-test)
-  (dec-current-test))
+;; TODO find out how to compose these
+;(deftest op-test
+;  (inc-cell-test)
+;  (dec-cell-test)
+;  (inc-current-test)
+;  (dec-current-test))

@@ -41,8 +41,9 @@
   (testing "Hello, world!"
     (is (r/valid-program? hello-world))))
 
-(deftest read-test
-  (ends-with-newline?-test)
-  (valid-tokens?-test)
-  (valid-loops-test?)
-  (valid-program?-test))
+;; TODO find out how to compose these
+;(deftest read-test
+;  (ends-with-newline?-test)
+;  (valid-tokens?-test)
+;  (valid-loops-test?)
+;  (valid-program?-test))
