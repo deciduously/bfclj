@@ -55,14 +55,11 @@
   "Check for matching loop brackets"
   [s]
   (let [brackets (just-brackets s)]
-    ;; If it's not even or zero, just stop
-    (if (or (empty? brackets) (even? (count brackets)))
+    (if (or (empty? brackets) (even? (count brackets))) ; If it's not even or zero, just stop
       (cond
-        ;; We never start with an open
-        (= \] (first brackets)) false
-        ;; And otherwise closes will always equal opens
-        (not (= (count (filter (partial = \[) brackets))
-                (count (filter (partial = \]) brackets)))) false
+        (= \] (first brackets)) false ; We never start with an open
+        (not= (count (filter (partial = \[) brackets)) ; And otherwise closes will always equal opens
+              (count (filter (partial = \]) brackets))) false
         :otherwise true)
       false)))
 
