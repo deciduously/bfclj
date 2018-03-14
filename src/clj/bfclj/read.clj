@@ -37,11 +37,8 @@
   [s]
   (= \newline (last s)))
 
-(defn loops-valid?
-  "Check for matching loop brackets"
-  [s]
-  (let [cs (split s #"")]
-    (even? (count (filter #(or (= "[" %) (= "]" %)) cs)))))
+;; if the second block of the rest of the sequence starts with the same as the head of the sequence, quit.
+
 
 ;; TODO only allow a newline as the terminating character
 (defn valid-tokens?
@@ -49,6 +46,30 @@
   [s]
   (let [valids #{\+ \- \[ \] \, \. \< \> \newline}]
     (reduce #(and % (contains? valids %2)) true s)))
+
+
+(def is-bracket? (partial contains? #{\[ \]}))
+
+(def just-brackets #(->> %
+                         (partition-by is-bracket?)
+                         (filter (comp is-bracket? first))
+                         flatten))
+
+;; check for an even number or 0 first to save time
+(defn loops-valid?
+  "Check for matching loop brackets"
+  [s]
+  (let [brackets (just-brackets s)]
+    ;; If it's not even or zero, just stop
+    (if (or (empty? brackets) (even? (count brackets)))
+      (cond
+        ;; We never start with an open
+        (= \] (first brackets)) false
+        ;; And otherwise closes will always equal opens
+        (not (= (count (filter (partial = \[) brackets))
+                (count (filter (partial = \]) brackets)))) false
+        :otherwise true)
+      false)))
 
 (defn valid-program?
   [s]

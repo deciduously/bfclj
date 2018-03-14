@@ -28,10 +28,14 @@
     (is (not (r/loops-valid? "...[..].[..\n"))))
   (testing "Two correct"
     (is (r/loops-valid? "..[.]..[...].\n")))
+  (testing "Nested"
+    (is (r/loops-valid? "..,[.,.,,[..,].,],,,>\n")))
   (testing "Two opens in a row"
     (is (not (r/loops-valid? "..[..[..]...\n"))))
   (testing "Right number, bad matches"
     (is (not (r/loops-valid? "..]...[,]...]\n"))))
+  (testing "A bunch of opens"
+    (is (not (r/loops-valid? "....[.,,,.[,.,[,.,[>>,..,\n"))))
   (testing "No loops"
     (is (r/loops-valid? "...\n")))
   (testing "Hello, world!"
