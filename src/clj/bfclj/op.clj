@@ -16,10 +16,9 @@
 
 ;; Loop
 
-;; TODO rewrite with thread macro
-(def jump #(assoc-in
-            (assoc-in % [:current] (+ (:offset %) (:current %)))
-            [:offset] nil))
+(def jump #(-> %
+               (assoc-in  [:current] (+ (:offset %) (:current %)))
+               (assoc-in [:offset] nil)))
 
 ;(def set-offset-and-inc-current
 ;  (do
