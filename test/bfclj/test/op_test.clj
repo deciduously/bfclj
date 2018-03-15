@@ -24,6 +24,10 @@
 (deftest dec-current-test
   (is (= {:tape [0 0] :current 0} (op/dec-current {:tape [0 0] :current 1}))))
 
+(deftest jump-test
+  (testing "Jump forward"
+    (is (= {:tape [0 0 0 0 0] :current 4 :offset nil} (op/jump {:tape [0 0 0 0 0] :current 1 :offset 3})))))
+
 ;; TODO find out how to compose these
 ;(deftest op-test
 ;  (inc-cell-test)

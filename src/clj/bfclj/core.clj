@@ -10,7 +10,8 @@
   "Run!"
   [program]
   (if (read/valid-program? program) ; switch to try/catch?
-    (loop [machine (parse/parse-bf program)]
+    (loop [ops (parse/get-ops program)
+           machine (parse/parse-bf program)]
       (prn machine) ; for debug purposes
       (if (empty? ops)
         "Done!"
