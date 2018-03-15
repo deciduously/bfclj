@@ -10,8 +10,7 @@
   "Run!"
   [program]
   (if (read/valid-program? program) ; switch to try/catch?
-    (loop [ops (parse/read-bf program) ; instead, pass the validates string to a fn in parse to return a machine
-           machine parse/fresh]
+    (loop [machine (parse/parse-bf program)]
       (prn machine) ; for debug purposes
       (if (empty? ops)
         "Done!"
@@ -22,4 +21,4 @@
   [prog & args]
   (condp = prog
     "hello-world" (run (:hello-world programs))
-    :otherwise run prog))
+    :otherwise (run prog)))
